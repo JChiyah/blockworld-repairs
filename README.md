@@ -1,7 +1,7 @@
 # BlockWorld-Repairs
-Repository for the EMNLP'24 paper "Repairs in a Block World: A New Benchmark for Handling User Corrections with Multi-Modal Language Models". Chiyah-Garcia et al. https://arxiv.org/abs/2409.14247
+Repository for the EMNLP'24 paper "Repairs in a Block World: A New Benchmark for Handling User Corrections with Multi-Modal Language Models". Chiyah-Garcia et al. https://aclanthology.org/2024.emnlp-main.643/
 
-Dataset and code coming November 2024 (EMNLP'24).
+Dataset and code coming soon! Work in progress...
 
 Cite as:
 
@@ -11,9 +11,19 @@ Cite as:
     author = "Chiyah-Garcia, Javier  and
       Suglia, Alessandro  and
       Eshghi, Arash",
-    booktitle = "Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP'24)",
+    editor = "Al-Onaizan, Yaser  and
+      Bansal, Mohit  and
+      Chen, Yun-Nung",
+    booktitle = "Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing",
+    series = "EMNLP'24",
     month = nov,
-    year = "Upcoming",
+    year = "2024",
+    address = "Miami, Florida, USA",
     publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.emnlp-main.643/",
+    doi = "10.18653/v1/2024.emnlp-main.643",
+    pages = "11523--11542"
 }
 ```
+
+See my website for more info: https://jchiyah.github.io
