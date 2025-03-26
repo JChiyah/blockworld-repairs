@@ -106,16 +106,18 @@ run_experiment() {
 # Handle finetune experiments
 finetune_experiments() {
 	local total_experiments=$(calculate_total_experiments)
-	log "Starting finetune experiments. Total experiments: $total_experiments"
+	log "Starting finetuning experiments. Total experiments: $total_experiments"
 	local current_exp=0
 
 	for test_data in "${TEST_DATASETS[@]}"; do
-		for goal in "${GOALS[@]}"; do
-			for mask in "${TURN_MASKING[@]}"; do
-				for prompt in "${PROMPT_TASK_INSTRUCTION[@]}"; do
-					local current_exp=$((current_exp + 1))
-					log "*** Experiment $current_exp/$total_experiments ***"
-					run_experiment "sft" "$train_data" "$test_data" "$mask" "$prompt" "$goal" "$@"
+		for train_data in "${TRAIN_DATASETS[@]}"; do
+			for goal in "${GOALS[@]}"; do
+				for mask in "${TURN_MASKING[@]}"; do
+					for prompt in "${PROMPT_TASK_INSTRUCTION[@]}"; do
+						local current_exp=$((current_exp + 1))
+						log "*** Experiment $current_exp/$total_experiments ***"
+						run_experiment "sft" "$train_data" "$test_data" "$mask" "$prompt" "$goal" "$@"
+					done
 				done
 			done
 		done
@@ -166,7 +168,7 @@ main() {
 			;;
 	esac
 
-	log "All experiments completed successfully"
+	log "All experiments completed"
 }
 
 # Execute main function with all arguments

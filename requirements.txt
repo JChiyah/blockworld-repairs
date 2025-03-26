@@ -1,0 +1,9 @@
+pydantic
+numpy
+pandas
+tabulate
+colorlog
+transformers
+torch
+peft
+accelerate
