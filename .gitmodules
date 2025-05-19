@@ -1,0 +1,3 @@
+[submodule "LLaVA"]
+	path = LLaVA
+	url = git@github.com:JChiyah/LLaVA.git
