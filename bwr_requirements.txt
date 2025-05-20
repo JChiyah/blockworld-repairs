@@ -1,0 +1,7 @@
+numpy
+tabulate
+pydantic
+colorlog
+datasets
+opencv-python
+flask # todo: remove this

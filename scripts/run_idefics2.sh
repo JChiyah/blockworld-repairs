@@ -7,9 +7,9 @@
 #SBATCH --job-name=run_idefics2
 #SBATCH --output=/users/fjc3/sharedscratch/scrum/run_idefics2/%J.out
 #SBATCH --gres gpu:1
-#SBATCH --chdir=/users/fjc3/block-world-training/idefics2
+#SBATCH --chdir=/users/fjc3/block-world-training/blockworld-repairs
 
-# sample runs:
+# Sample runs:
 # 	sbatch run_idefics2.sh zeroshot source
 # 	sbatch run_idefics2.sh zeroshot source,target
 # 	sbatch run_idefics2.sh finetune target
@@ -17,10 +17,13 @@
 
 
 # Configuration
-readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-readonly BASE_DIR="$(dirname "$SCRIPT_DIR")"
-readonly LOG_DIR="/users/fjc3/sharedscratch/scrum"
 readonly CONDA_ENV="/users/fjc3/block-world-training/.envs/idefics2"
+# Get the directory containing the script.
+# This script should be called either from the root or from the scripts directory
+# Determine PROJECT_ROOT (base dir) and SCRIPT_DIR (scripts folder) reliably.
+_SCRIPT_DIR_TEMP="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+readonly SCRIPT_DIR="$_SCRIPT_DIR_TEMP"
+readonly PROJECT_ROOT="$(dirname "$_SCRIPT_DIR_TEMP")"
 
 # Model configuration
 readonly MODEL_BASE="HuggingFaceM4/idefics2-8b"
@@ -82,7 +85,7 @@ calculate_total_experiments() {
 # Run experiment with error handling
 run_experiment() {
 	local cmd=(
-		python "$BASE_DIR/src/idefics2_main.py"
+		python "$PROJECT_ROOT/src/idefics2_main.py"
 		--base_model "$MODEL_BASE"
 		--load_model "$MODEL_LOAD"
 		--task "$1"
